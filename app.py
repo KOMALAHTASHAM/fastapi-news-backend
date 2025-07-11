@@ -12,6 +12,12 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+@app.get("/")
+def root():
+    return {
+        "status": "ok",
+        "message": "Welcome to the FastAPI News Sentiment API.",}
+
 @app.post("/analyze")
 async def analyze(request: Request):
     data = await request.json()
